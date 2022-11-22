@@ -9,14 +9,19 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: baxeico/circleci-django-postgis
+      - image: circleci/python:3.7.1-gdal
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - run:
           name: Install Dependencies
           command: |
+            sudo apt update
+            sudo apt install -y gdal-bin
+            pipenv sync --dev
             pip install -r requirements.txt
       - run:
           command: python manage.py test
