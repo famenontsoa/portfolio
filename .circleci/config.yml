@@ -9,8 +9,8 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: circleci/python:3.6.3
-      - image: circleci/postgres:10.1-postgis
+      - image: wooyek/geodjango
+      - image: circleci/postgres:alpine-postgis-ram
         environment:
           - POSTGRES_USER: postgres
           - POSTGRES_PASSWORD: Baghera2016+
