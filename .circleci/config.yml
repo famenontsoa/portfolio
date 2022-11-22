@@ -10,7 +10,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: circleci/python:3.6.3
-      - image: circleci/postgres:15.0.0-postgis
+      - image: circleci/postgres:10.1-postgis
         environment:
           - POSTGRES_USER: postgres
           - POSTGRES_PASSWORD: Baghera2016+
