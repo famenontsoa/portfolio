@@ -21,8 +21,6 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run: sudo apt-get update && sudo apt-get install binutils libproj-dev gdal-bin libgeos++ proj-bin
       - run:
           name: Install Dependencies
