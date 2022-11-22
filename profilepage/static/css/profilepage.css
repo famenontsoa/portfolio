@@ -1,0 +1,12 @@
+h1 a, h2 a {
+    color: #C25100;
+}
+html,body {
+ height: 100%;
+ margin: 0;
+}
+
+#map {
+ height: 90%;
+ width: 60%;
+}
