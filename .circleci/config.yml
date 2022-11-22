@@ -18,7 +18,7 @@ jobs:
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run:
           name: Install GDAL
-          command: sudo apt-get install -y gdal-bin python-gdal python3-gdal
+          command: sudo su && apt-get install -y gdal-bin python-gdal python3-gdal
       - run:
           name: Install Dependencies
           command: |
