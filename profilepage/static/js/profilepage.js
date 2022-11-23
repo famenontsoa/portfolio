@@ -20,11 +20,23 @@ async function load_markers() {
    return geojson
 }
 
+function onClick(feature,e) {
+     $.ajax({
+          url: `/api/profiles/${feature.id}`,
+          type: "GET"
+        }).done(function (response) {
+          // $('#opp').load("{% url 'profile_edit %}");
+        });
+}
+
 async function render_markers() {
   const markers = await load_markers()
   L.geoJSON(markers, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.username +"</br>"+ feature.properties.homeAddress)
+        layer.bindTooltip(feature.properties.username +"</br>"+ feature.properties.homeAddress,{direction: 'top'})
+        layer.on({
+        click: onClick.bind(null,feature)
+        });
      }
   }).addTo(map)
 }

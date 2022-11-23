@@ -1,12 +1,13 @@
 {% extends 'profilepage/base.html' %}
-{% load static %}
 
 {% block content %}
-  <!-- <div id="map"></div> -->
-
-  <!-- {% for profile in users %}
-  <article class="profile">
-      <h2><a href="{% url 'profile_detail' pk=profile.pk %}">{{ profile}}</a></h2>
-  </article>
-  {% endfor %} -->
+  <h2>List of Users</h2>
+  <ul>
+  {% for profile in profiles.features %}
+  <li><article class="profile">
+        <h2>{{ profile.properties.username }}</h2>
+        <p>{{ profile.properties.homeAddress|linebreaksbr }}</p>
+  </article></li>
+  {% endfor %}
+  <ul>
 {% endblock %}

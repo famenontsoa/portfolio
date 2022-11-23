@@ -1,24 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 import json
-from django.core.serializers import serialize
 from .models import Profile
 from .forms import ProfileForm
+from .serializers import ProfileSerializer
 from django.views.generic import TemplateView
 
 class profileMapView(TemplateView):
-    template_name = "profilepage/base.html"
+    template_name = "profilepage/profile_list.html"
 
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
-        profiles = Profile.objects.filter(published_date__lte=timezone.now())
-        context["profiles"] = json.loads(serialize("geojson", profiles))
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles, many=True)
+        context["profiles"]= json.loads(json.dumps(serializer.data))
         return context
-
-# def profile_list(request):
-#     users = UserProfile.objects.filter(published_date__lte=timezone.now())
-#     return render(request, 'profilepage/profile_list.html', {'users': users})
-
 
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, pk=pk)

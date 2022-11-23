@@ -2,11 +2,15 @@ h1 a, h2 a {
     color: #C25100;
 }
 html,body {
- height: 100%;
- margin: 0;
+ margin: 2%;
+ height: 93%;
+}
+
+.container{
+  height: 100%;
 }
 
 #map {
- height: 90%;
- width: 60%;
+ height: 100%;
+ width: 100%;
 }
