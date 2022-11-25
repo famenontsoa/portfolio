@@ -47,8 +47,8 @@ class AuthenticationFormTest(SeleniumTestCase):
         time.sleep(0.5)
 
         # Check that the user is logged in
-        self.assertEqual(self.driver.current_url, self.live_server_url + '/')
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/profile/'+ str(user.profile.id) +"/")
 
         self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "a").text, 'Portfolio Map')
-        self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "h2").text, 'List of Users')
-        self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "h2 a").text, 'test@user.com')
+        self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "h2").text, user.username)
+        edit = self.driver.find_element(By.CSS_SELECTOR, ".bi-pencil-fill")
