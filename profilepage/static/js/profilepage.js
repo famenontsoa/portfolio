@@ -25,7 +25,9 @@ function onClick(feature,e) {
           url: `/api/profiles/${feature.id}`,
           type: "GET"
         }).done(function (response) {
-          // $('#opp').load("{% url 'profile_edit %}");
+          // Construct the full URL with "id"
+          document.location.href = `/profile/${feature.id}`;
+
         });
 }
 

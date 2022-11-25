@@ -1,13 +1,15 @@
 {% extends 'profilepage/base.html' %}
 
 {% block content %}
-  <h2>List of Users</h2>
-  <ul>
-  {% for profile in profiles.features %}
-  <li><article class="profile">
-        <h2>{{ profile.properties.username }}</h2>
-        <p>{{ profile.properties.homeAddress|linebreaksbr }}</p>
-  </article></li>
-  {% endfor %}
-  <ul>
+    <h2>List of Users</h2>
+    <ul>
+      {% for profile in profiles.features %}
+      <li>
+        <article class="profile">
+            <h2><a href="{% url 'profile_detail' pk=profile.id %}">{{ profile.properties.username }}</a></h2>
+            <p>{{ profile.properties.homeAddress|linebreaksbr }}</p>
+        </article>
+      </li>
+      {% endfor %}
+    <ul>
 {% endblock %}

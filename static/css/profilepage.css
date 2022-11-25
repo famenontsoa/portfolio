@@ -1,9 +1,36 @@
 h1 a, h2 a {
     color: #C25100;
 }
+
+
 html,body {
- height: 100%;
- margin: 0;
+ margin: 2%;
+ height: 93%;
+}
+
+.page-header {
+    background-color: #C25100;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+.container{
+  height: 100%;
+  margin-left: 0;
+}
+
+.col-7{
+  margin-left: inherit;
 }
 
 #map {

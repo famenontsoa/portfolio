@@ -1,8 +1,10 @@
 {% extends 'profilepage/base.html' %}
 
 {% block content %}
-    <h2>Edit User profile</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <h2>Edit Profile</h2>
+    {{ form.media }}
+    <form method="POST" class="post-form">
+      {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-secondary">Save</button>
     </form>

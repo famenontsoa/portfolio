@@ -1,0 +1,28 @@
+{% extends "../profilepage/base.html" %}
+
+{% block content %}
+    {% if form.errors %}
+        <p class='error'>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <div id="logincontainer">
+              <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+                <div class="form-row">
+                  <label class="required">{{ form.username.label_tag }}</label>
+                  {{ form.username }}
+                </div>
+                <div class="form-row">
+                  <label class="required">{{ form.password.label_tag }}</label>
+                  {{ form.password }}
+                </div>
+
+                <div class="submit-row">
+                  <input type="submit" id="btn-login" value="login" />
+                  <a href="{% url 'signup' %}"><input type="button" name="" value="sign up"></a>
+                  <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+              </form>
+            </div>
+
+{% endblock %}

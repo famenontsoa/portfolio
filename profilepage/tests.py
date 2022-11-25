@@ -1,16 +1,47 @@
-
-from django.test import TestCase
-from .models import Profile
-from django.contrib.gis.geos import Point
 from django.contrib.auth.models import User
+from profilepage.testing_tools import SeleniumTestCase
+from selenium.webdriver.common.by import By
 
-class ProfileTestCase(TestCase):
-    @classmethod
-    def setUpTestData(self):
-        user1 = User.objects.create(username="sara",password="kjhjkh")
-        user1.profile.homeAddress = "NYC"
-        user1.save()
 
-    def test_can_create_profile(self):
-        user = User.objects.last()
-        self.assertEqual(user.profile.homeAddress, "NYC")
+import time
+
+class AuthenticationFormTest(SeleniumTestCase):
+    def test_authentication_form(self):
+        # Create a user to login with
+        user = User.objects.create_user(
+            username="test@user.com", password="12345"
+        )
+
+        # Go to the login page
+        self.driver.get(self.live_server_url + "/login/")
+
+        # Find HTML elements
+        username_input = self.driver.find_element(By.NAME, "username")
+        password_input = self.driver.find_element(By.NAME, "password")
+        login_button = self.driver.find_element(By.ID, "btn-login")
+
+        # Type in an username that doesn't exist
+        username_input.send_keys("wrong@user.com")
+
+        # Type in a password
+        password_input.send_keys("wrongpassword")
+        login_button.click()
+
+        # Wait for request
+        time.sleep(0.5)
+
+        # Check that the error message is displayed
+        error_message = self.driver.find_element(By.CSS_SELECTOR, ".error")
+        self.assertEqual(error_message.text, "Your username and password didn't match. Please try again.")
+
+        # Type in the correct username and password
+        # username_input.send_keys("")
+        # username_input.send_keys(user.username)
+        # password_input.send_keys("12345")
+        # login_button.click()
+        #
+        # # Wait for request
+        # time.sleep(0.5)
+        #
+        # # Check that the user is logged in
+        # self.assertEqual(self.driver.current_url, self.live_server_url)
