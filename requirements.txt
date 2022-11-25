@@ -6,3 +6,4 @@ djangorestframework~=3.12.0
 djangorestframework-gis~=0.17
 django-filter~=2.4.0
 selenium
+webdriver_manager
