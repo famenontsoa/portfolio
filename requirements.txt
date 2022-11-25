@@ -7,4 +7,3 @@ djangorestframework-gis~=0.17
 django-filter~=2.4.0
 selenium
 webdriver_manager
-chromium-chromedriver
