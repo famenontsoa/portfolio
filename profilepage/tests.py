@@ -51,4 +51,5 @@ class AuthenticationFormTest(SeleniumTestCase):
 
         self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "a").text, 'Portfolio Map')
         self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "h2").text, user.username)
-        edit = self.driver.find_element(By.CSS_SELECTOR, ".bi-pencil-fill")
+        edit_button = self.driver.find_element(By.CSS_SELECTOR, ".bi-pencil-fill")
+        map = self.driver.find_element(By.CSS_SELECTOR, ".leaflet-container")
