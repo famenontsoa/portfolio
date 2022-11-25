@@ -35,7 +35,7 @@ class AuthenticationFormTest(SeleniumTestCase):
         self.assertEqual(error_message.text, "Your username and password didn't match. Please try again.")
 
         # Type in the correct username and password
-        # username_input.send_keys("")
+        # username_input.clear()
         # username_input.send_keys(user.username)
         # password_input.send_keys("12345")
         # login_button.click()
