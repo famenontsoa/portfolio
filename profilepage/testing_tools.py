@@ -11,7 +11,7 @@ class SeleniumTestCase(StaticLiveServerTestCase):
         options = webdriver.ChromeOptions()
         options.add_argument("--start-maximized")
         # service = Service(f"{settings.BASE_DIR}/chromedriver")
-        cls.driver = webdriver.Chrome(options=options)
+        cls.driver = webdriver.Chrome(executable_path=f"{settings.BASE_DIR}/chromedriver") 
         cls.driver.implicitly_wait(10)
 
     @classmethod
