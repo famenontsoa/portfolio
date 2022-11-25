@@ -19,9 +19,9 @@
           <div class="col-7">
             <h1><a href="{% url 'profile_list' %}">Portfolio Map</a></h1>
           </div>
-          <div class="col-5">
+          <div class="col-5" class="top-menu">
             {% if user.is_authenticated %}
-               <a href="{% url 'profile_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+               <a href="{% url 'profile_list' %}" ><span class="glyphicon glyphicon-edit"></span></a>
                <p class="top-menu">Hello {{ user.username }} <a href="{% url 'logout' %}"><i class="bi bi-box-arrow-in-right"></i></a></p>
              {% endif %}
            </div>
@@ -30,7 +30,7 @@
       <main class="container">
             <div class="row h-100">
                 {% if user.is_authenticated %}
-                {{ profiles|json_script:"markers-data" }}
+                  {{ profiles|json_script:"markers-data" }}
                 <div class="col-7">
                   <div id="map"></div>
                 </div>

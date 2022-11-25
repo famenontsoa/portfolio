@@ -9,7 +9,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    homeAddress = models.CharField(max_length=100)
+    homeAddress = models.CharField(max_length=100,default=None)
     phoneNumber = PhoneNumberField(null=True, blank=False, unique=True)
     location = models.PointField(default=Point(0,0, srid=4326))
     published_date = models.DateTimeField(blank=True, null=True)

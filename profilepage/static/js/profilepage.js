@@ -2,15 +2,14 @@ const copy = '© <a href="https://osm.org/copyright">OpenStreetMap</a> contribut
 const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 const osm = L.tileLayer(url, { attribution: copy })
 const map = L.map('map', { layers: [osm] , minZoom: 5})
-map.locate().on('locationfound', e => map.setView(e.latlng, 4)).on('locationerror', () => map.setView([0, 0], 5))
-
-// const profiles = JSON.parse(document.getElementById('markers-data').textContent)
+map.locate().on('locationfound', e => map.setView(e.latlng,4)).on('locationerror', () => map.setView([0, 0], 5))
 // const features = L.geoJSON(profiles).bindPopup(layer => layer.feature.properties.homeAddress)
 // const features = L.geoJSON(profiles, {
 //     onEachFeature: function (feature, layer) {
 //       layer.bindPopup(feature.properties.username +"</br>"+ feature.properties.homeAddress)
 //    }
 // })
+//
 // map.addLayer(features).fitBounds(features.getBounds())
 
 async function load_markers() {

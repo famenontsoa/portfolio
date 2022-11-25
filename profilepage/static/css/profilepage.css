@@ -28,9 +28,10 @@ html,body {
     font-size: 26pt;
 }
 
-.page-header span{
+.page-header .top-menu{
     color: #ffffff;
     font-size: 12pt;
+    float: right;
 }
 
 main {

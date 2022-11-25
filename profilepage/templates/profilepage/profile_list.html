@@ -6,8 +6,7 @@
       {% for profile in profiles.features %}
       <li>
         <article class="profile">
-            <h2><a href="{% url 'profile_detail' pk=profile.id %}">{{ profile.properties.username }}</a></h2>
-            <p>{{ profile.properties.homeAddress|linebreaksbr }}</p>
+            <h3><a href="{% url 'profile_detail' pk=profile.id %}">{{ profile.properties.username }}</a></h3>
         </article>
       </li>
       {% endfor %}

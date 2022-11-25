@@ -10,9 +10,15 @@
           {% endif %}
         </aside>
         <h2>{{ profile }}</h2>
-        <p>{{ profile.phoneNumber}}</p>
-        <p>{{ profile.homeAddress|linebreaksbr }}</p>
+        <p>Phone number : {{ profile.phoneNumber}}</p>
+        <p>Home address: {{ profile.homeAddress|linebreaksbr }}</p>
+        <span>Location:</span>
+        <ul>
+            <li>Latitude : {{profile.location.coords.1}}</li>
+            <li>Longitude : {{profile.location.coords.0}}</li>
+        </ul>
         {% if profile.published_date %}
+            <span>Published date:</span>
             <time class="date">
                 {{ profile.published_date }}
             </time>

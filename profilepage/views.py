@@ -18,14 +18,20 @@ class profileMapView(TemplateView):
 
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
-        profiles = Profile.objects.all()
+        if self.request.user.is_superuser:
+            profiles = Profile.objects.all()
+        else:
+            profiles = [Profile.objects.get(user=self.request.user)]
         serializer = ProfileSerializer(profiles, many=True)
         context["profiles"]= json.loads(json.dumps(serializer.data))
         return context
 
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return super().get(request, *args, **kwargs)
+            if self.request.user.is_superuser:
+                return super().get(request, *args, **kwargs)
+            else:
+                return HttpResponseRedirect(reverse('profile_detail', kwargs={'pk': self.request.user.profile.id}))
         return HttpResponseRedirect(reverse('login'))
 
 def profile_detail(request, pk):
@@ -47,8 +53,6 @@ def profile_edit(request,pk):
 
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
-    # pk = User.objects.last().profile.id
-    # success_url = reverse_lazy("profile_edit", kwargs={'pk': pk},)
     template_name = "registration/signup.html"
 
     def get_success_url(self):
