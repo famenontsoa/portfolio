@@ -35,13 +35,16 @@ class AuthenticationFormTest(SeleniumTestCase):
         self.assertEqual(error_message.text, "Your username and password didn't match. Please try again.")
 
         # Type in the correct username and password
-        # username_input.clear()
-        # username_input.send_keys(user.username)
-        # password_input.send_keys("12345")
-        # login_button.click()
-        #
-        # # Wait for request
-        # time.sleep(0.5)
-        #
-        # # Check that the user is logged in
-        # self.assertEqual(self.driver.current_url, self.live_server_url)
+        username_input = self.driver.find_element(By.NAME, "username")
+        password_input = self.driver.find_element(By.NAME, "password")
+        login_button = self.driver.find_element(By.ID, "btn-login")
+        username_input.clear()
+        username_input.send_keys(user.username)
+        password_input.send_keys("12345")
+        login_button.click()
+
+        # Wait for request
+        time.sleep(0.5)
+
+        # Check that the user is logged in
+        self.assertEqual(self.driver.current_url, self.live_server_url + '/')
