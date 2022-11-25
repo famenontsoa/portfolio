@@ -22,6 +22,7 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
+      - run: echo '* libraries/restart-without-asking boolean true' | sudo debconf-set-selections
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - checkout
