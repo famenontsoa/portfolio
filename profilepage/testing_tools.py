@@ -12,6 +12,7 @@ class SeleniumTestCase(StaticLiveServerTestCase):
         options = webdriver.ChromeOptions()
         options.add_argument("--start-maximized")
         options.add_argument("--headless")
+        options.add_argument("--disable-dev-shm-usage")
         # options.binary_location = "/usr/bin/google-chrome"
         service = Service(f"{settings.BASE_DIR}/chromedriver")
         cls.driver = webdriver.Chrome('/usr/local/bin/chromedriver', options=options)
