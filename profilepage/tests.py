@@ -49,7 +49,8 @@ class AuthenticationFormTest(SeleniumTestCase):
         # Check that the user is logged in
         self.assertEqual(self.driver.current_url, self.live_server_url + '/profile/'+ str(user.profile.id) +"/")
 
+        # Check that the username, edit button and map are displayed
         self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "a").text, 'Portfolio Map')
         self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, "h2").text, user.username)
-        edit_button = self.driver.find_element(By.CSS_SELECTOR, ".bi-pencil-fill")
-        map = self.driver.find_element(By.CSS_SELECTOR, ".leaflet-container")
+        self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, ".bi-pencil-fill").is_displayed(), True)
+        self.assertEqual(self.driver.find_element(By.CSS_SELECTOR, ".leaflet-container").is_displayed(),True)
